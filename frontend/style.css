@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 75px;
+}
+
+.content {
+    margin-top: 64px;
+}
+
+.todo {
+    width: 600px;
+    padding: 24px 16px;
+    border: 1px solid #E8ECEE;
+    border-radius: 4px;
+}
+
+.pending {
+    border-left: 16px solid #2F80ED;
+}
+
+.done {
+    border-left: 16px solid #EB5757;
+    text-decoration: line-through;
+}
+
+ul {
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
