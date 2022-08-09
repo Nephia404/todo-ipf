@@ -13,20 +13,121 @@
 <body>
     <main class="container">
         <div class="regist">
-            <form action="">
-                <input type="text">
+            <form class="todo-form">
+                <input type="text" placeholder="新しいタスク">
                 <button type="submit">作成</button>
             </form>
         </div>
         <ul class="content">
-            <li class="todo pending">
-                テスト
-            </li>
-            <li class="todo done">
-                テスト
-            </li>
         </ul>
     </main>
+    <script>
+        const STATUS = {
+            PENDING: "pending",
+            DONE: "done",
+        }
+
+        const todos = [{
+            id: 1,
+            body: 'テスト',
+            status: STATUS.PENDING
+        }, {
+            id: 2,
+            body: 'テスト',
+            status: STATUS.DONE
+        }, {
+            id: 4,
+            body: 'テスト',
+            status: STATUS.DONE
+        }, {
+            id: 5,
+            body: 'テスト',
+            status: STATUS.PENDING
+        }, {
+            id: 6,
+            body: 'テスト',
+            status: STATUS.DONE
+        }]
+
+        function createPendingTodo(body) {
+            const list = document.createElement("li")
+            list.classList.add("todo", "pending")
+            list.textContent = body
+            return list
+        }
+
+        function createDeleteButton() {
+            const button = document.createElement("button")
+            button.textContent = "削除"
+            return button
+        }
+
+        function createDoneTodo(body) {
+            const list = document.createElement("li")
+            list.classList.add("todo", "done")
+            list.textContent = body
+
+            list.appendChild(createDeleteButton())
+            return list
+        }
+
+        // UIを更新する関数
+        function render(todos, root) {
+            for (let i = 0; i < todos.length; i++) {
+                const todo = todos[i]
+
+                let el;
+                switch (todo.status) {
+                    case STATUS.PENDING:
+                        el = createPendingTodo(todo.body)
+                        break;
+
+                    case STATUS.DONE:
+                        el = createDoneTodo(todo.body)
+                        break;
+                }
+
+                root.appendChild(el)
+            }
+        }
+
+        render(todos, document.querySelector("ul.content"))
+
+
+        // function addTodo(e) {
+        //     e.preventDefault()
+        //     console.log(e)
+        //     const input = document.querySelector(".todo-form input");
+        //     const newTodo = document.createElement("li");
+        //     newTodo.classList.add("todo", "pending");
+        //     newTodo.textContent = input.value;
+        //     document.querySelector("ul.content").appendChild(newTodo);
+        //     input.value = "";
+
+        //     attachDblEvent(newTodo)
+        // }
+
+        // const todoForm = document.querySelector(".todo-form");
+        // todoForm.addEventListener("submit", addTodo);
+
+        // function attachDblEvent(element) {
+        //     element.addEventListener("dblclick", toggleStatus)
+        // }
+
+        // function toggleStatus(e) {
+        //     const classList = e.target.classList
+        //     if (classList.contains("pending")) {
+        //         classList.replace("pending", "done")
+        //     } else {
+        //         classList.replace("done", "pending")
+        //     }
+        // }
+        // const todos = document.querySelectorAll(".todo");
+        // for (let i = 0; i < todos.length; i++) {
+        //     const todo = todos[i]
+        //     attachDblEvent(todo)
+        // }
+    </script>
 </body>
 
 </html>

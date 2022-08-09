@@ -1,3 +1,7 @@
+body {
+    background-color: #FAFAFA;
+}
+
 main {
     display: flex;
     width: 100%;
@@ -15,6 +19,7 @@ main {
     padding: 24px 16px;
     border: 1px solid #E8ECEE;
     border-radius: 4px;
+    background-color: #FEFEFE;
 }
 
 .pending {
@@ -32,4 +37,25 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.todo-form {
+    display: flex;
+    width: 600px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+}
+
+.todo-form input {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    background: #F2F2F2;
+}
+
+.todo-form button {
+    padding: 16px 32px;
+    background-color: #2F80ED;
+    border: none;
+    color: #F2F2F2;
 }
